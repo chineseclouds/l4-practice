@@ -15,8 +15,8 @@ def char_count(text: str, ignore_whitespace: bool = False) -> int:
 
 def truncate(text: str, max_len: int, suffix: str = "…") -> str:
     """Shorten text to at most max_len characters, ending with suffix if cut."""
-    if len(text) <= max_len:
-        return text
     if max_len < len(suffix):
         raise ValueError("max_len must be at least len(suffix)")
+    if len(text) <= max_len:
+        return text
     return text[: max_len - len(suffix)] + suffix

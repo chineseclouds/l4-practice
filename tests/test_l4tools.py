@@ -57,3 +57,12 @@ def test_truncate_invalid_max_len():
         truncate("hello world", 2, suffix="...")
     with pytest.raises(ValueError):
         truncate("hello world", -1)
+
+
+def test_truncate_invalid_max_len_short_text():
+    with pytest.raises(ValueError):
+        truncate("hi", 2, suffix="...")
+
+
+def test_truncate_max_len_equals_suffix_len():
+    assert truncate("hello", 1) == "…"
